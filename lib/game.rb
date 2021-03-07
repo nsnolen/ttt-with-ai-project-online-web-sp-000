@@ -1,5 +1,5 @@
  class Game
-  attr_accessor :board, :player_1, :player_2
+  attr_accessor :board, :player_1, :player_2, :user_input
 
   WIN_COMBINATIONS = [
     [0,1,2],
@@ -45,5 +45,26 @@
       @board.cells[combo[0]]
     end
   end
+
+ def turn
+   puts "Please enter a number 1-9:"
+   @user_input = current_player.move(@board)
+   if @board.valid_move?(@user_input)
+     @board.update(@user_input, current_player)
+   else puts "Please enter a number 1-9:"
+     @board.display
+     turn
+   end
+   @board.display
+ end
+
+ def play
+   turn until over?
+   if won?
+     puts "Congratulations #{winner}!"
+   elsif draw?
+     puts "Cat's Game!"
+   end
+ end
 
 end
