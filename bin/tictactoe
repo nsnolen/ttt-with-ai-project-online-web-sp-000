@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
-require 'pry'
+
 
 
 def start_game
-  binding.pry
+
   puts "Welcome to Tic Tac Toe!"
   puts "What kind of game will you like to play? Please choose:
   0 - Computer VS Computer
